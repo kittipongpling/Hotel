@@ -6,8 +6,27 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
 <body>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    </head>
   <app-root></app-root>
+
+  <!-- เนฟบา -->
+  <script>
+    $(function() {
+    $(".navigation-tab-item").click(function() {
+      $(".navigation-tab-item").removeClass("active");
+      $(this).addClass("active");
+      $(".navigation-tab-overlay").css({
+        left: $(this).prevAll().length * 130 + "px"
+      });
+    });
+  });
+  
+    </script>
 </body>
 </html>

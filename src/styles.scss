@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+    --input-padding-x: 1.5rem;
+    --input-padding-y: .75rem;
+}
+body{
+    height: 100vh;
+    background-color: white;
+}
