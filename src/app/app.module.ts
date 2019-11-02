@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { PagenofoundComponent } from './pagenofound/pagenofound.component';
 import { InsertComponent } from './insert/insert.component';
 import { SelectComponent } from './select/select.component';
+import { EditComponent } from './edit/edit.component';
 
 const appRoutes: Routes = [
   { path: 'user', component: UserComponent },
@@ -23,6 +24,7 @@ const appRoutes: Routes = [
   { path: 'pagenofound', component: PagenofoundComponent },
   { path: 'insert', component: InsertComponent },
   { path: 'select', component: SelectComponent },
+  { path: 'edit', component: EditComponent },
 
  
   { path: '',
@@ -41,6 +43,7 @@ const appRoutes: Routes = [
     PagenofoundComponent,
     InsertComponent,
     SelectComponent,
+    EditComponent,
     
   ],
   imports: [

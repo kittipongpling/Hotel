@@ -4,13 +4,11 @@ import { Router } from '@angular/router';  //คือการเด้งไ�
 
 
 @Component({
-  selector: 'app-insert',
-  templateUrl: './insert.component.html',
-  styleUrls: ['./insert.component.scss']
+  selector: 'app-edit',
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.scss']
 })
-export class InsertComponent implements OnInit {
-
-  public insert_user;
+export class EditComponent implements OnInit {
 
   constructor(public http:HttpClient,public router: Router) { 
     
@@ -19,11 +17,10 @@ export class InsertComponent implements OnInit {
   ngOnInit() {
   }
 
-
-  insertUser(data){
+  editUser(data){
     
     const dataSend = {
-                    // รับมาจาก html
+                    user_id_user : 26 || "ไม่ระบุ",
                     user_name_user :data.user_name || "ไม่ระบุ",
                     user_lastname_user : data.user_lastname || "ไม่ระบุ",
                     age_user : data.age || "ไม่ระบุ",
@@ -39,7 +36,7 @@ export class InsertComponent implements OnInit {
     }
     console.log(dataSend)
       
-    this.http.post("http://127.0.0.1:9999/api/getInsert_User", dataSend)
+    this.http.post("http://127.0.0.1:9999/api/getUpdate_User", dataSend)
     .subscribe(
     data  => {
       
@@ -57,7 +54,7 @@ export class InsertComponent implements OnInit {
   }
 
   onClickSubmit(data) {
-    this.insertUser(data)
+    this.editUser(data)
     // alert("Entered Email id : " + data.emailid); 
     console.log(data.user_name)
     console.log(data.user_lastname)

@@ -18,7 +18,7 @@
             <th>Call Number</th>
             <th>Address</th>
             <th>Email</th>
-            <th>Insert Data</th>
+            <th>Edit Data</th>
             <th>Delete Data</th>
           </tr>
         </thead>
@@ -31,11 +31,26 @@
             <td >{{user.user_call}}</td>
             <td >{{user.address}}</td>
             <td >{{user.email_address}}</td>
-            <td ><a routerLink="/insert" routerLinkActive="active" class="far fa-angle-double-up">เพิ่มข้อมูล</a></td>
-            <td ><button type="button" name="user.user_id" id="user.user_id" (click)="getdelete(user.user_id)">เพิ่มข้อมูล</button></td>
+            <!-- <button type="button" class="btn btn-primary" >Open modal for @getbootstrap</button> -->
+            <td ><button type="button" class="btn btn-danger"  (click)="getdelete(user.user_id)">ลบข้อมูล</button></td>
+            <td ><button 
+              type="button" 
+              class="btn btn-warning" 
+                (click)="getuser_first(user.user_id)"
+
+                data-toggle="modal" data-target="#exampleModal"
+              >แก้ไขข้อมูล</button></td>
+
+              
+
+
           </tr>
           <tr>
-            
+            <button 
+              type="button" 
+              class="btn btn-success" 
+              routerLink="/insert"
+              >เพิ่มข้อมูล</button>
         </tbody>
       </table>
     </div>
@@ -94,3 +109,93 @@
       <p class="mdt-subhead-2"><strong>Donate:</strong> You can support me via <a class="paypal" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=s%2ekupletsky%40gmail%2ecom&amp;lc=US&amp;item_name=Material%20Design%20Responsive%20Table&amp;currency_code=USD&amp;bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted">PayPal</a>, <a class="webmoney" href="https://funding.webmoney.ru/material-design-iconic-font/donate">WebMoney</a> or <a class="gratipay" href="http://gratipay.com/zavoloklom/" target="_blank">Gratipay</a></p>
     </div>
   </div>
+
+
+
+  <!-- start Model -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <!-- ข้อความ -->
+
+
+         <form class="needs-validation" novalidate #edituser="ngForm" (ngSubmit)="onClickSubmit(edituser.value)">
+         <div *ngFor="let user of users_firt">
+          <div class="input-group-append">
+
+              <button class="btn btn-outline-secondary" type="button" id="button-addon2">Name</button>
+              <div class="input-group">
+                  <input  value="{{user.user_name}}" name="user_name" id="user_name" type="text" class="form-control" placeholder="ชื่อจริง" aria-label="Recipient's username" aria-describedby="button-addon2" required ngModel>
+             
+              </div>
+            </div>
+           
+
+           
+<!-- 
+          <div class="input-group-append">
+
+              <button class="btn btn-outline-secondary" type="button" id="button-addon2">LastName</button>
+              <div class="input-group">
+                  <input value="{{user.user_lastname}}" type="text" class="form-control" placeholder="นามสกุล" aria-label="Recipient's username" >
+             
+              </div>
+            </div>
+          <div class="input-group-append">
+
+              <button class="btn btn-outline-secondary" type="button" id="button-addon2">Age</button>
+              <div class="input-group">
+                  <input value="{{user.age}}" type="text" class="form-control" placeholder="อายุ" aria-label="Recipient's username" aria-describedby="button-addon2">
+             
+              </div>
+            </div>
+          <div class="input-group-append ">
+
+              <button class="btn btn-outline-secondary" type="button" id="button-addon2">Call Number</button>
+              <div class="input-group ">
+                  <input value="{{user.user_call}}" type="text" class="form-control" placeholder="เบอร์โทร" aria-label="Recipient's username" aria-describedby="button-addon2">
+             
+              </div>
+            </div>
+          <div class="input-group-append">
+
+              <button class="btn btn-outline-secondary" type="button" id="button-addon2">Address</button>
+              <div class="input-group">
+                  <input value="{{user.address}}" type="text" class="form-control" placeholder="ที่อยู่" aria-label="Recipient's username" aria-describedby="button-addon2">
+             
+              </div>
+            </div>
+          <div class="input-group-append">
+
+              <button class="btn btn-outline-secondary" type="button" id="button-addon2">Email</button>
+              <div class="input-group">
+                  <input value="{{user.email_address}}" type="text" class="form-control" placeholder="อีเมล" aria-label="Recipient's username" aria-describedby="button-addon2">
+             
+              </div>
+            </div>-->
+          </div> 
+        </form>
+          <button type="submit" class="btn btn-primary"  >Save changes</button>
+          <!-- จบข้อความ -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" 
+          class="btn btn-secondary" 
+          data-dismiss="modal"
+          (click)="edit_user()"
+          >Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<!-- end Model -->
