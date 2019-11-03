@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-select',
@@ -11,9 +11,13 @@ export class SelectComponent implements OnInit {
 
   public users;
   public users_firt;
-
-  constructor(public http:HttpClient,public router: Router) { 
-
+  public keep_data;
+  
+  constructor(public http:HttpClient,public router: Router,private activatedRoute: ActivatedRoute) { 
+    this.activatedRoute.queryParams.subscribe(params => {
+      // let  params;
+      console.log(params); // Print the parameter to the console. 
+  });
   }
 
   ngOnInit() {
@@ -72,6 +76,8 @@ export class SelectComponent implements OnInit {
     .subscribe(
     data  => {
       console.log(user_id);
+      
+
       console.log("POST Request is successful ", data[0]);
       this.users_firt = data
     },
@@ -84,47 +90,8 @@ export class SelectComponent implements OnInit {
     );
   }
 
-
-  edit_user(user){
-    const dataSend = {
-      // user_id_user : data.user_id,
-  user_name_user : user.user_name
-  // user_lastname_user : user.user_lastname,
-  //  age_user : user.age,
-  // user_call_user : user.user_call,
-  // address_user : user.address,
-  // email_address_user : user.email_address
-
-    }
-    console.log(dataSend)
-
-    this.http.post("http://kittipong.com:9999/api/getUpdate_User", dataSend)
-    .subscribe(
-    data  => {
-      
-      this.router.navigate(['/select' ]);
-      
-    },
-    error  => {
-      
-      console.log("Error", error);
-      
-    }
-    
-    );
-
+  cliclToEdit(item) {
+    this.router.navigate(['/edit', item]);
   }
-  onClickSubmit(user) {
-    console.log('object')
-    // this.edit_user(user)
-    // alert("Entered Email id : " + user.emailid); 
-    console.log(user.user_name)
-    console.log(user)
-    // console.log(user.user_lastname)
-    // console.log(user.age)
-    // console.log(user.user_call)
-    // console.log(user.address)
-    // console.log(user.email_address)
-    
- }
+  
 }

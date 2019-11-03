@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';  //คือการเด้งไปหน้านั้นๆ
+import { Router, ActivatedRoute } from '@angular/router';  //คือการเด้งไปหน้านั้นๆ
 
 
 @Component({
@@ -10,23 +10,51 @@ import { Router } from '@angular/router';  //คือการเด้งไ�
 })
 export class EditComponent implements OnInit {
 
-  constructor(public http:HttpClient,public router: Router) { 
+  user_id
+  user_name
+  user_lastname
+  age
+  user_call
+  address
+  email_address
+
+
+
+
+  public users_firt;
+
+  constructor(public http:HttpClient,public router: Router,private activatedRoute: ActivatedRoute) { 
     
+    this.activatedRoute.params.subscribe(params => {
+      this.user_id = params.user_id
+      this.user_name  = params.user_name
+      this.user_lastname = params.user_lastname
+      this.age = params.age
+      this.user_call = params.user_call
+      this.address = params.address
+      this.email_address = params.email_address
+      console.log(params); // Print the parameter to the console. 
+      console.log(this.age)
+      console.log(this.email_address)
+      console.log(this.user_id)
+  });
+
   }
 
   ngOnInit() {
+    
   }
 
-  editUser(data){
+  editUser(user){
     
     const dataSend = {
-                    user_id_user : 26 || "ไม่ระบุ",
-                    user_name_user :data.user_name || "ไม่ระบุ",
-                    user_lastname_user : data.user_lastname || "ไม่ระบุ",
-                    age_user : data.age || "ไม่ระบุ",
-                    user_call_user : data.user_call || "ไม่ระบุ",
-                    address_user : data.address || "ไม่ระบุ",
-                    email_address_user : data.email_address || "ไม่ระบุ",
+                    user_id_user : user.user_id || "ไม่ระบุ",
+                    user_name_user :user.user_name || "ไม่ระบุ",
+                    user_lastname_user : user.user_lastname || "ไม่ระบุ",
+                    age_user : user.age || "ไม่ระบุ",
+                    user_call_user : user.user_call || "ไม่ระบุ",
+                    address_user : user.address || "ไม่ระบุ",
+                    email_address_user : user.email_address || "ไม่ระบุ",
 
       //  f_name : data.fname || "ไม่ระบุ",
       //  l_name : data.lname || "ไม่ระบุ" ,
@@ -53,18 +81,42 @@ export class EditComponent implements OnInit {
     
   }
 
-  onClickSubmit(data) {
-    this.editUser(data)
-    // alert("Entered Email id : " + data.emailid); 
-    console.log(data.user_name)
-    console.log(data.user_lastname)
-    console.log(data.age)
-    console.log(data.user_call)
-    console.log(data.address)
-    console.log(data.email_address)
+  onClickSubmit(user) {
+    this.editUser(user)
+    // alert("Entered Email id : " + user.emailid); 
+    console.log(user.user_name)
+    console.log(user.user_lastname)
+    console.log(user.age)
+    console.log(user.user_call)
+    console.log(user.address)
+    console.log(user.email_address)
     
  }
 
+
+ getuser_first(){
+  const dataSend = {
+    "user_id_user": 30
+    
+  }
+    
+  this.http.post("http://kittipong.com:9999/api/getUser_Firt", dataSend)
+  .subscribe(
+  data  => {
+    // console.log(user_id);
+    
+
+    console.log("POST Request is successful ", data[0]);
+    this.users_firt = data
+  },
+  error  => {
+    
+    console.log("Error", error);
+    
+  }
+  
+  );
+}
 
 
 }

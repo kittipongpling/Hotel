@@ -38,7 +38,7 @@ export class InsertComponent implements OnInit {
       //  nike_name: data.nikcname  || "ไม่ระบุ"
     }
     console.log(dataSend)
-      
+  
     this.http.post("http://127.0.0.1:9999/api/getInsert_User", dataSend)
     .subscribe(
     data  => {

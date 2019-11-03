@@ -18,8 +18,8 @@
             <th>Call Number</th>
             <th>Address</th>
             <th>Email</th>
-            <th>Edit Data</th>
             <th>Delete Data</th>
+            <th>Edit Data</th>
           </tr>
         </thead>
         <tbody *ngFor="let user of users">
@@ -36,16 +36,18 @@
             <td ><button 
               type="button" 
               class="btn btn-warning" 
-                (click)="getuser_first(user.user_id)"
-
-                data-toggle="modal" data-target="#exampleModal"
+                
+                
+                (click)="cliclToEdit(user)"
+                
               >แก้ไขข้อมูล</button></td>
-
+              <!-- Model -->
+              <!-- data-toggle="modal" data-target="#exampleModal" -->
               
 
 
           </tr>
-          <tr>
+          
             <button 
               type="button" 
               class="btn btn-success" 
@@ -127,7 +129,91 @@
           <!-- ข้อความ -->
 
 
-         <form class="needs-validation" novalidate #edituser="ngForm" (ngSubmit)="onClickSubmit(edituser.value)">
+
+          <body class="bg-light">
+            <div class="container">
+            <div class="col-md-8 order-md-1">
+              <h4 class="mb-3">Billing address</h4>
+        
+              <form class="needs-validation" novalidate #edituser = "ngForm" (ngSubmit) = "onClickSubmit(edituser.value)">
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="firstName">user_id</label>
+                    <input type="email" class="form-control" id="user_id" name = "user_id" placeholder="" value="" required ngModel>
+                    <div class="invalid-feedback">
+                      Valid first name is required.
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="firstName">First name</label>
+                    <input type="email" class="form-control" id="user_name" name = "user_name" placeholder="" value="" required ngModel>
+                    <div class="invalid-feedback">
+                      Valid first name is required.
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="lastName">Last name</label>
+                    <input type="email" class="form-control" id="user_lastname" name = "user_lastname" placeholder="" value="" required ngModel>
+                    <div class="invalid-feedback">
+                      Valid last name is required.
+                    </div>
+                  </div>
+                </div>
+        
+                <div class="mb-3">
+                  <label for="username">age</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">@</span>
+                    </div>
+                    <input type="number" class="form-control" id="age" name = "age" placeholder="Username" required ngModel>
+                    <div class="invalid-feedback" style="width: 100%;">
+                      Your username is required.
+                    </div>
+                  </div>
+                </div>
+        
+                <div class="mb-3">
+                  <label for="email">call<span class="text-muted">(Optional)</span></label>
+                  <input type="text" class="form-control" id="user_call" name = "user_call" placeholder="you@example.com" ngModel>
+                  <div class="invalid-feedback">
+                    Please enter a valid email address for shipping updates.
+                  </div>
+                </div>
+        
+                <div class="mb-3">
+                  <label for="address">address</label>
+                  <input type="text" class="form-control" id="address" name = "address" placeholder="1234 Main St" required ngModel>
+                  <div class="invalid-feedback">
+                    Please enter your shipping address.
+                  </div>
+                </div>
+          
+                <div class="mb-3">
+                  <label for="address2">mail_address <span class="text-muted">(Optional)</span></label>
+                  <input type="text" class="form-control" id="email_address" name = "email_address" placeholder="Apartment or suite" ngModel>
+                </div>
+                <input type = "submit" > 
+                <!-- <button (click)="onClick()">click me</button> -->
+        </form>
+        </div>
+        </div>
+        </body>
+        <!-- <form #userlogin = "ngForm" (ngSubmit) = "onClickSubmit(userlogin.value)"> 
+          <input type = "text" name = "emailid" placeholder = "emailid" ngModel> 
+          <br/> 
+          <input type = "password" name = "passwd" placeholder = "passwd" ngModel> 
+          <br/> 
+          <input type = "submit" value = "submit"> 
+        </form> -->
+
+
+
+
+
+
+
+         <!-- <form class="needs-validation" novalidate #edituser="ngForm" (ngSubmit)="onClickSubmit(edituser.value)">
          <div *ngFor="let user of users_firt">
           <div class="input-group-append">
 
@@ -136,10 +222,7 @@
                   <input  value="{{user.user_name}}" name="user_name" id="user_name" type="text" class="form-control" placeholder="ชื่อจริง" aria-label="Recipient's username" aria-describedby="button-addon2" required ngModel>
              
               </div>
-            </div>
-           
-
-           
+            </div> -->
 <!-- 
           <div class="input-group-append">
 
@@ -181,16 +264,16 @@
              
               </div>
             </div>-->
-          </div> 
+          <!-- </div> 
         </form>
-          <button type="submit" class="btn btn-primary"  >Save changes</button>
+          <button type="submit" class="btn btn-primary"  >Save changes</button> -->
           <!-- จบข้อความ -->
         </div>
         <div class="modal-footer">
           <button type="button" 
           class="btn btn-secondary" 
           data-dismiss="modal"
-          (click)="edit_user()"
+          
           >Close</button>
           
         </div>
