@@ -7,13 +7,7 @@
 
       <form class="needs-validation" novalidate #edituser = "ngForm" (ngSubmit) = "onClickSubmit(edituser.value)">
         <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="firstName">user_id</label>
-            <input type="email" class="form-control" id="user_id" name = "user_id" placeholder="" [(ngModel)]="user_id" required ngModel>
-            <div class="invalid-feedback">
-              Valid first name is required.
-            </div>
-          </div>
+          
           <div class="col-md-6 mb-3">
             <label for="firstName">First name</label>
             <input type="email" class="form-control" id="user_name" name = "user_name" placeholder="" [(ngModel)]="user_name" required ngModel>
@@ -58,10 +52,19 @@
             Please enter your shipping address.
           </div>
         </div>
+        
   
         <div class="mb-3">
           <label for="address2">mail_address <span class="text-muted">(Optional)</span></label>
           <input type="text" class="form-control" id="email_address" [(ngModel)]="email_address" name = "email_address" placeholder="Apartment or suite" ngModel>
+        </div>
+        
+        <div class="col-md-6 mb-3">
+          <label for="firstName"></label>
+          <input type="hidden" class="form-control" id="user_id" name = "user_id" placeholder="" [(ngModel)]="user_id" required ngModel>
+          <div class="invalid-feedback">
+            Valid first name is required.
+          </div>
         </div>
         <input type = "submit" > 
         <!-- <button (click)="onClick()">click me</button> -->

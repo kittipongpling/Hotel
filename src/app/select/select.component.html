@@ -5,6 +5,11 @@
     
     <!-- Responsive table starts here -->
     <!-- For correct display on small screens you must add 'data-title' to each 'td' in your table -->
+    <button 
+              type="button" 
+              class="btn btn-success" 
+              routerLink="/insert"
+              >เพิ่มข้อมูล</button>
     <div class="table-responsive-vertical shadow-z-1">
     <!-- Table starts here -->
     <table id="table" class="table table-hover table-mc-light-blue">
@@ -32,7 +37,7 @@
             <td >{{user.address}}</td>
             <td >{{user.email_address}}</td>
             <!-- <button type="button" class="btn btn-primary" >Open modal for @getbootstrap</button> -->
-            <td ><button type="button" class="btn btn-danger"  (click)="getdelete(user.user_id)">ลบข้อมูล</button></td>
+            <th ><button type="button" class="btn btn-danger"  (click)="getdelete(user.user_id)">ลบข้อมูล</button></th>
             <td ><button 
               type="button" 
               class="btn btn-warning" 
@@ -48,11 +53,7 @@
 
           </tr>
           
-            <button 
-              type="button" 
-              class="btn btn-success" 
-              routerLink="/insert"
-              >เพิ่มข้อมูล</button>
+            
         </tbody>
       </table>
     </div>
